@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mateusz Kuś – Inżynier IT, cyberbezpieczeństwo, Linux, OSINT, wsparcie techniczne">
+    <title>Mateusz Kuś - IT Engineer</title>
+    <style>
+        body { font-family: 'Consolas', 'Monaco', monospace; line-height: 1.6; color: #dcdcdc; background-color: #121212; max-width: 800px; margin: 0 auto; padding: 20px; }
+        header { background: #1e1e1e; color: #00ff9d; padding: 2rem; text-align: center; border: 1px solid #333; border-left: 4px solid #3498db; position: relative; }
+        h1 { margin: 0; color: #fff; text-transform: uppercase; letter-spacing: 2px; }
+        h1::after { content: '_'; animation: blink 1s infinite; }
+        .lang-switcher { position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 1.5rem; }
+        .lang-switcher span { transition: opacity 0.2s; }
+        .lang-switcher span.inactive { opacity: 0.35; }
+
+        section { background: #1a1a1a; padding: 20px; margin-top: 20px; border: 1px solid #333; transition: all 0.3s ease; border-left: 4px solid #3498db; }
+        section:hover { background: #222; border-left: 10px solid #00ff9d; box-shadow: 0 0 15px rgba(0, 255, 157, 0.1); }
+
+        h2 { color: #3498db; border-bottom: 1px solid #3498db; padding-bottom: 5px; font-size: 1.2rem; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; transition: transform 0.2s; cursor: default; }
+        li:hover { transform: translateX(10px); color: #00ff9d; }
+
+        strong { color: #00ff9d; }
+        .contact { margin-top: 15px; font-weight: bold; }
+
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        footer { text-align: center; margin-top: 30px; color: #666; font-size: 0.8rem; }
+
+        @media (max-width: 480px) {
+            body { padding: 10px; }
+            header { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="lang-switcher">
+        <span onclick="setLang('pl')" aria-label="Zmień język na polski" id="flag-pl">🇵🇱</span>
+        <span onclick="setLang('en')" aria-label="Switch language to English" id="flag-en" class="inactive">🇬🇧</span>
+    </div>
+    <h1 id="title">Mateusz Kuś</h1>
+    <p id="subtitle"></p>
+    <div class="contact" id="contact"></div>
+</header>
+
+<section>
+    <h2 id="h1"></h2>
+    <p id="desc"></p>
+</section>
+
+<section>
+    <h2 id="h2"></h2>
+    <ul id="skills"></ul>
+</section>
+
+<section>
+    <h2 id="h4"></h2>
+    <ul id="projects"></ul>
+</section>
+
+<section>
+    <h2 id="h3"></h2>
+    <ul id="exp"></ul>
+</section>
+
+<footer>
+    <p id="footer"></p>
+</footer>
+
+<script>
+    const content = {
+        pl: {
+            subtitle: "> Inżynier Informatyki | Specjalista IT",
+            contact: '> <a href="https://www.linkedin.com/in/mateusz-ku%C5%9B-85a53b221/" target="_blank" style="color:#00ff9d;">LinkedIn</a>',
+            h1: "[ O mnie ]",
+            desc: "Jestem inżynierem informatyki z bogatym, wieloletnim doświadczeniem w obszarach wsparcia technicznego, Help Desk, handlu oraz logistyki. Łączę solidną wiedzę techniczną z praktycznym podejściem do rozwiązywania problemów infrastrukturalnych. Specjalizuję się w bezpieczeństwie sieciowym, analizie danych (OSINT) oraz utrzymaniu systemów IT.",
+            h2: "[ Umiejętności ]",
+            skills: `
+                <li><strong>Cyberbezpieczeństwo i Sieci:</strong> Bezpieczeństwo sieci, MikroTik, Kali Linux, analiza podatności.</li>
+                <li><strong>OSINT:</strong> Wykorzystanie narzędzi OSINT do zbierania i analizy informacji w środowisku cyfrowym.</li>
+                <li><strong>Systemy Linux:</strong> Administracja Debian, utrzymanie stabilności systemów serwerowych i stacyjnych.</li>
+                <li><strong>Logistyka:</strong> Koordynacja procesów logistycznych, zarządzanie przepływem materiałów.</li>
+                <li><strong>Wsparcie techniczne:</strong> Obsługa Service Desk (SCSM, IBM Maximo).</li>
+            `,
+            h4: "[ Home Lab i Projekty ]",
+            projects: `
+                <li><strong>Administracja infrastrukturą:</strong> Projektowanie i zarządzanie domowymi środowiskami serwerowymi opartymi na Proxmox, optymalizacja pracy systemów operacyjnych.</li>
+                <li><strong>Serwery danych i mediów:</strong> Konfiguracja TrueNAS jako bezpiecznego repozytorium danych oraz Jellyfin do dystrybucji mediów w sieci lokalnej.</li>
+                <li><strong>Bezpieczeństwo sieci domowej:</strong> Wdrożenie Pi-hole jako blokady reklam i filtrowania DNS, konfiguracja firewalla MikroTik.</li>
+            `,
+            h3: "[ Doświadczenie zawodowe ]",
+            exp: `
+                <li><strong>Specjalista ds. logistyki | Lambertz Polonia Sp. z o.o.</strong> – koordynacja procesów logistycznych.</li>
+                <li><strong>Technical Support Engineer | IT Partners Security Sp. z o.o.</strong> – wsparcie bezpieczeństwa IT i sieci.</li>
+                <li><strong>Pre-Sales / Key Account Manager | Senttic S.A.</strong> – wsparcie inżynieryjne sprzedaży.</li>
+                <li><strong>Senior / Help Desk Specialist | ZliT</strong> – utrzymanie systemów teleinformatycznych.</li>
+            `,
+            footer: "// Gotowy do nowych wyzwań technicznych //"
+        },
+        en: {
+            subtitle: "> IT Engineer | IT Specialist",
+            contact: '> <a href="https://www.linkedin.com/in/mateusz-ku%C5%9B-85a53b221/" target="_blank" style="color:#00ff9d;">LinkedIn</a>',
+            h1: "[ About me ]",
+            desc: "I am an IT engineer with multi-year experience in technical support, Help Desk, sales, and logistics. I combine solid technical knowledge with a practical approach to troubleshooting infrastructure problems. I specialize in network security, OSINT data analysis, and IT systems maintenance.",
+            h2: "[ Skills ]",
+            skills: `
+                <li><strong>Cybersecurity & Networks:</strong> Network security, MikroTik, Kali Linux, vulnerability analysis.</li>
+                <li><strong>OSINT:</strong> Using OSINT tools for information gathering and analysis in digital environments.</li>
+                <li><strong>Linux Systems:</strong> Debian administration, maintaining server and workstation stability.</li>
+                <li><strong>Logistics:</strong> Logistics process coordination, material flow management.</li>
+                <li><strong>Technical Support:</strong> Service Desk systems (SCSM, IBM Maximo).</li>
+            `,
+            h4: "[ Home Lab & Projects ]",
+            projects: `
+                <li><strong>Infrastructure Administration:</strong> Designing and managing home server environments based on Proxmox, operating system optimization.</li>
+                <li><strong>Data & Media Servers:</strong> Configuring TrueNAS as a secure data repository and Jellyfin for local network media distribution.</li>
+                <li><strong>Home Network Security:</strong> Deploying Pi-hole for ad-blocking and DNS filtering, MikroTik firewall configuration.</li>
+            `,
+            h3: "[ Professional Experience ]",
+            exp: `
+                <li><strong>Logistics Specialist | Lambertz Polonia Sp. z o.o.</strong> – logistics process coordination.</li>
+                <li><strong>Technical Support Engineer | IT Partners Security Sp. z o.o.</strong> – IT security and network support.</li>
+                <li><strong>Pre-Sales / Key Account Manager | Senttic S.A.</strong> – engineering support for sales.</li>
+                <li><strong>Senior / Help Desk Specialist | ZliT</strong> – maintenance of teleinformatic systems.</li>
+            `,
+            footer: "// Ready for new technical challenges //"
+        }
+    };
+
+    function setLang(lang) {
+        const c = content[lang];
+        document.getElementById('subtitle').innerText = c.subtitle;
+        document.getElementById('contact').innerHTML = c.contact;
+document.getElementById('h1').innerText = c.h1;
+        document.getElementById('desc').innerText = c.desc;
+        document.getElementById('h2').innerText = c.h2;
+        document.getElementById('skills').innerHTML = c.skills;
+        document.getElementById('h4').innerText = c.h4;
+        document.getElementById('projects').innerHTML = c.projects;
+        document.getElementById('h3').innerText = c.h3;
+        document.getElementById('exp').innerHTML = c.exp;
+        document.getElementById('footer').innerText = c.footer;
+
+        document.getElementById('flag-pl').className = lang === 'pl' ? '' : 'inactive';
+        document.getElementById('flag-en').className = lang === 'en' ? '' : 'inactive';
+
+        document.documentElement.lang = lang;
+    }
+
+    setLang('pl');
+</script>
+
+</body>
+</html>
